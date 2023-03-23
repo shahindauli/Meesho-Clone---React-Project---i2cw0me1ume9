@@ -1,0 +1,270 @@
+*{
+    margin: 0;padding: 0;box-sizing: border-box; font-family: Arial, Helvetica, sans-serif;
+}
+.header-cont{
+  margin-top: 5px;  display: flex; justify-content: center; align-items: center; flex-wrap: wrap;
+   border: 1px solid rgb(212, 212, 212); border-left: none; border-right: none;
+}
+.htop{
+    width: 85%; min-height: 80px; display: flex;
+}
+.logo{
+   width: 13%; height: 80px; display: flex; 
+   align-items: center; 
+}
+.input-box{
+    width: 37%; min-height: 100%;  display: flex; 
+   align-items: center; justify-content: center;
+}
+.search-icon{
+    width: 90%; height: 60%; display: flex; justify-content: center; align-items: center;
+     border: 1px solid rgb(212, 212, 212); font-size: 20px; color: grey; padding: 10px; border-radius: 5px;
+}
+.search-box{
+   color: rgb(244, 51, 151); margin-left: 10px;
+   font-size: 18px; width: 90%; border: none; height: 80%; outline: none;
+}
+.hrcont{
+    width: 50%; min-height: 100%;  display: flex;
+}
+.dapp-bs{
+    width: 65%; height: 100%; display: flex; justify-content: flex-end; align-items: center;
+}
+.dapp-cont{
+    position: relative; box-sizing: border-box; width: fit-content; height: 100%; display: flex; align-items: center;  justify-content: center;
+}
+.dapp-content{
+    position: absolute; top: 100%;  display: none; z-index: 1; box-shadow: 5px 5px 10px rgb(212, 212, 212);
+   background-color: white;  border: 1px solid rgb(212, 212, 212); padding: 20px; color: black;
+}
+
+
+.dvider{
+    width: 2px; height: 60%; background-color: rgb(212, 212, 212); margin-left: 20px;
+}
+.dapp-cont:hover {
+ color: rgb(244, 51, 151);  border-bottom:3px solid rgb(244, 51, 151);
+}
+
+.dapp-cont:hover .dapp-content{
+    display: block; margin-top: 3px;
+}
+.bs-cont{
+  margin-left: 20px;  width: fit-content; height: 100%;display: flex; align-items: center;
+}
+
+
+.cart-user{
+    width:35%; height: 100%;  display: flex; justify-content: center;
+}
+.pc{position: relative;
+    width: 40%;  height: 100%; display: flex; justify-content: center; align-items: center;
+}
+.user{
+ text-align: center;
+}
+.user-dropdown{
+padding: 10px; position: absolute; width: 200px;  border: 1px solid rgb(212, 212, 212); top: 100%; background-color: white;
+box-shadow: 5px 5px 10px rgb(212, 212, 212); display: none;
+}
+.user-dcont{
+    width: 100%; height: 100%; 
+}
+.signup>a{
+    text-decoration: none; color: white;
+}
+.login>a{
+    text-decoration: none; color: white;
+}
+.signup{
+    width: 100%; padding: 10px;  background-color: rgb(244, 51, 151); display: flex;
+    justify-content: center; align-items: center;
+}
+
+.login{
+    width: 100%; padding: 10px;  background-color: rgb(244, 51, 151); display: flex;
+    justify-content: center; align-items: center;
+}
+.signup:hover{background-color: rgb(238, 145, 193);}
+.login:hover{background-color: rgb(238, 145, 193);}
+.pc:hover .user-dropdown{
+     display: block; top: calc(100% + 3px); color: black; font-weight: normal;
+}
+.signup-cont{
+    width: 100%; display: flex; justify-content: center; align-items: center;
+}
+.signup-conti{
+    width: 400px;
+}
+.sgnupimg{
+    width: 100%; border-top-left-radius: 10px; border-top-right-radius: 10px;
+}
+.signupinp{
+    width: 100%; height: 40px; outline: none;
+}
+.signupbtn{
+    width: 100%; background-color: rgb(244, 51, 151); border: none; color: white; font-size: 30px; padding: 20px;
+    border-radius: 10px;
+}
+.signupbtn:hover{
+    background-color: rgb(238, 145, 193);
+}
+
+
+
+
+
+.cartn{
+   position: absolute; top: 3px; left: 50%; width: 22px; height: 22px; background-color: rgb(244, 51, 151); 
+   color: white; visibility: hidden; border-radius: 50%; font-size: 12px; display: flex; justify-content: center;align-items: center;
+}
+.pcs:hover{
+    color: rgb(244, 51, 151); border-bottom: 3px solid rgb(244, 51, 151); font-weight: bold;
+}
+
+
+
+
+
+
+
+.hbottom{
+    border-top: 1px solid rgb(212, 212, 212); width: 100%; display: flex; justify-content: center;
+}
+.hbot{
+    width:85%; height: 50px; 
+}
+.nav-bar{
+    width: 100%; height: 100%; display: flex;justify-content: space-between;
+}
+.navitem{
+   width: fit-content; height: 100%; display: flex; align-items: center;
+}
+.navitem>a{
+    text-decoration: none; color:black; font-size: 16px;
+}
+.s{
+    height: 100%; display: flex; align-items: center;
+}
+.s:hover{
+color: rgb(244, 51, 151); border-bottom: 3px solid rgb(244, 51, 151); font-weight: bold;
+}
+
+.midpart{
+    width: 100%; min-height: 600px; display: flex; justify-content: center;
+}
+.midmain{
+    width: 85%; min-height: 100%;  display: flex; justify-content: center; flex-wrap: wrap;
+}
+.mid-top{
+ width: 80%; min-height: 400px; display: flex;
+}
+.left{
+    width: 50%; height: 100%; padding-top: 100px;
+}
+.lhfs{
+    font-size: 40px;
+}
+.codrfd{
+   width: 80% ; display: flex; justify-content: space-between;
+}
+.cc{
+    display: flex; padding-left: 20px;
+}
+.ccss{
+    border-left: 1px solid grey;
+}
+.right{
+    width: 50%; height: 100%;  padding-top: 50px; display: flex; justify-content: center;
+}
+.imgmidr{
+    width: 90%;
+}
+.dwnldmapp{
+    display: flex; align-items: center;
+    width: fit-content; padding-top: 10px; padding-bottom: 10px; padding-left: 30px; padding-right: 30px; background-color: rgb(244, 51, 151); display: flex; border-radius: 5px; color: white;
+}
+.fr{
+    display: flex; width: 100%; min-height: 500px;
+}
+.filter{
+    width: 30%; min-height: 100%; padding: 30px;
+}
+.results{
+    width: 70%;  min-height: 100%; display: flex; flex-wrap: wrap;  
+    justify-content: space-evenly; 
+}
+.product-cat{
+    width: 22%; height: 450px; border: 1px solid rgb(212, 212, 212); padding: 10px; margin-top: 30px;
+    border-radius: 10px;
+}
+.img-cat{
+ height: 240px; 
+}
+.img-cat-size{
+    width: 100%; height: 100%; 
+}
+.title-cat{
+    height: 40px ; display: flex;  align-items: center; width: 100%;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: grey;
+}
+.price-cat{
+    height: 60px; display: flex; align-items: center;
+}
+.price-cat>h4>span{
+    font-size: 12px; font-weight: lighter; 
+}
+.freedelv-cat{
+    height: 30px ; display: flex; align-items: center; font-size: 12px;
+}
+.rating-cat{
+    height: 60px ; display: flex;  align-items: center;
+}
+.rating-rev{
+    display: flex; align-items: end;
+}
+.rating-s{
+    width: fit-content; padding: 5px; background-color: green; color: white; border-radius: 10px; 
+}
+.rating-s>p>span{
+  font-size: 10px;
+}
+.review{
+    margin-left: 10px; font-size: 12px; color: grey; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer-cont{
+    width: 100%;  display: flex; justify-content: center;
+}
+.footer-contm{
+     width: 85%; height: 100%; display: flex; justify-content: space-between;
+     padding-top: 50px; padding-bottom: 50px;
+}
+.f1img{
+    display: flex; max-width: 420px; justify-content: space-between;
+}
+.f3img{
+    display: flex; max-width: 420px; justify-content: space-between;
+}
+.f4{
+    max-width: 250px;
+}
