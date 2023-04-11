@@ -5,7 +5,7 @@ const Midpart = (props) => {
     return (
         <div className="midpart">
             <div className="midmain">
-{props.children}
+                {props.children}
             </div>
         </div>
     )

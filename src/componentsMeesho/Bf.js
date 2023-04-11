@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { centralContext } from "./Ccontext";
 import Fr from "./Fr";
-const Kids = () => {
+const Bf = () => {
     const { fetchedProductData, setfetchedProductData } = useContext(centralContext);
 
     return (
@@ -10,4 +10,4 @@ const Kids = () => {
         </>
     )
 }
-export default Kids;
+export default Bf;

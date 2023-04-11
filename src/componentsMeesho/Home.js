@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Midrimg from '../img/mimg.webp';
 import Fd from '../img/freeDelivery.svg';
 import Cod from '../img/cod.svg';
 import Er from '../img/easyReturns.svg';
 import Playstoreicon from '../img/playicon.webp';
+import Fr from "./Fr";
+import { centralContext } from "./Ccontext";
+
 const Home = () => {
-    const [data, setData] = useState([]);
+    const { fetchedProductData, setfetchedProductData } = useContext(centralContext);
 
     function fetchData() {
-        fetch('https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products')
+        fetch('https://fakestoreapi.com/products')
             .then(res => res.json())
             .then(data => {
-                setData(data);
-                console.log(data)
-
+                setfetchedProductData(data);
             })
     }
+
+
     useEffect(() => {
         fetchData();
-
     }, [])
     return (
         <>
@@ -46,40 +48,7 @@ const Home = () => {
                     <img src={Midrimg} className='imgmidr' />
                 </div>
             </div>
-            <div className="fr">
-                <div className="filter">
-                    <div><h1>Total Results {data.length}</h1></div><br></br>
-                    <div><h2>Filter Results By</h2></div><br></br>
-                    <div>
-                        <input type='checkbox' id='men' />&nbsp;&nbsp;<label htmlFor='men'>Men</label><br></br>
-                        <input type='checkbox' id='women' />&nbsp;&nbsp;<label htmlFor='women'>Women</label><br></br>
-                        <input type='checkbox' id='jewellary' />&nbsp;&nbsp;<label htmlFor='jewellary'>Jewellary</label><br></br>
-                        <input type='checkbox' id='bags' />&nbsp;&nbsp;<label htmlFor='bags'>Bags</label><br></br>
-
-                    </div>
-                </div>
-                <div className="results">
-                    {data.map((m, i) => {
-                        return (
-                            <div className="product-cat" key={i}>
-                                <div className="img-cat"><img src={m.image} className='img-cat-size' /></div>
-                                <div className="title-cat"><p>{m.title}</p></div>
-                                <div className="price-cat"><h4>₹ {m.price} <span>onwards</span></h4></div>
-                                <div className="freedelv-cat"><p>Free Delivery</p></div>
-                                <div className="rating-cat">
-                                    <div className='rating-rev'>
-                                    <div className="rating-s">
-                                        <p>{m.rating.rate} <span><i className="fa-solid fa-star"></i></span></p>
-                                    </div>
-                                    <div className="review">{m.rating.count} <span>Reviews</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-
-            </div>
+            <Fr fetchedProductData={fetchedProductData} />
         </>
     )
 }

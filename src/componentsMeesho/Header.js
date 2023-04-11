@@ -1,13 +1,85 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Menu from "./Menu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Androidapp from '../img/playstore-icon-big.png';
 import Iapp from '../img/appstore-icon-big.png';
+import { centralContext } from "./Ccontext";
 
 const Header = () => {
-    const [userLoggedIn, setUserLoggedIn] = useState(false);
-   
 
+    const ul = useContext(centralContext);
+    var { userLoggedIn, showCart, setShowCart, setUserLoggedIn, setfetchedProductData, ctlm, setctl, showCartempty, setShowCartEmpty } = ul;
+    const navg = useNavigate();
+    const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+    const userCred = JSON.parse(localStorage.getItem("userCred"))
+
+    const cart = JSON.parse(localStorage.getItem('cart'))
+
+    function showC() {
+        if (cart === null)
+            setShowCart(false)
+        else
+            setShowCart(true)
+    }
+
+    function searchEnter(event) {
+        if (event.keyCode === 13) {
+            fetch(`https://fakestoreapi.com/products/category/${event.target.value}`)
+                .then(res => res.json())
+                .then(data => {
+                    setfetchedProductData(data);
+                })
+            navg("/flt")
+        }
+
+    }
+    function logedUser() {
+        if (localStorage.getItem("loggedUser") !== null) {
+            setUserLoggedIn(true)
+        }
+        else {
+            setUserLoggedIn(false)
+        }
+    }
+    function logout() {
+        if (cart !== null) {
+            for (let i = 0; i < userCred.length; i++) {
+                if (userCred[i].email === loggedUser.email) {
+                    userCred[i].cart = cart;
+                    let userCredtemp = [...userCred.slice(0, i), userCred[i], ...userCred.slice(i + 1)]
+                    localStorage.setItem('userCred', JSON.stringify(userCredtemp))
+                    break;
+                }
+            }
+            localStorage.removeItem('cart')
+            setShowCart(false)
+            setctl(false)
+            setShowCart(false)
+            localStorage.removeItem('loggedUser')
+            setUserLoggedIn(false)
+            navg("/")
+
+        }
+        else {
+            for (let i = 0; i < userCred.length; i++) {
+                if (userCred[i].email === loggedUser.email) {
+                    delete userCred[i].cart;
+                    let userCredtemp = [...userCred.slice(0, i), userCred[i], ...userCred.slice(i + 1)]
+                    localStorage.setItem('userCred', JSON.stringify(userCredtemp))
+                    break;
+                }
+            }
+            localStorage.removeItem('loggedUser')
+            setUserLoggedIn(false)
+            navg("/")
+        }
+    }
+
+
+    useEffect(() => {
+        logedUser()
+        showC();
+    })
     return (
         <>
             <div className="header-cont">
@@ -18,7 +90,7 @@ const Header = () => {
                     <div className="input-box">
                         <div className="search-icon">
                             <i className="fa-solid fa-magnifying-glass"></i>
-                            <input className="search-box" type='text' placeholder='Try Saree, Kurti or Search by Product Code' ></input>
+                            <input className="search-box" type='text' onKeyDown={searchEnter} placeholder='Try Saree, Kurti or Search by Product Code' ></input>
 
                         </div>
                     </div>
@@ -51,8 +123,8 @@ const Header = () => {
                                 <div className="user-dropdown">
                                     <div className="user-dcont">
                                         <h3>Hello User</h3><br />
-                                        {userLoggedIn ? <p></p> : <p style={{ fontSize: '12px' }}>To access your Meesho account<br></br>Sign Up or Log In</p>}
-                                        <br />{userLoggedIn ? <p></p> :
+                                        {userLoggedIn ? <p>{loggedUser.email.split('@')[0]}</p> : <p style={{ fontSize: '12px' }}>To access your Meesho account<br></br>Sign Up or Log In</p>}
+                                        <br />{userLoggedIn ? <button onClick={logout} style={{ backgroundColor: 'rgb(244,51,151)', cursor: 'pointer', border: 'none', borderRadius: "5px", padding: '5px', color: "white" }}>Log Out</button> :
                                             <div>
                                                 <div className="signup"><Link to='/signup'><p>Sign Up</p></Link></div><br></br>
                                                 <div className="login"><Link to='/login'><p>Log In</p></Link></div>
@@ -61,12 +133,12 @@ const Header = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="pc">
+                            <div className="pc" onClick={() => navg('/cart')}>
                                 <div className="user">
                                     <i className="fa-solid fa-cart-shopping"></i>
                                     <p>Cart</p>
                                 </div>
-                                <div className="cartn">12</div>
+                                {showCart && <div className="cartn">{cart.length}</div>}
                             </div>
                         </div>
                     </div>

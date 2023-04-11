@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { centralContext } from "./Ccontext";
 import Fr from "./Fr";
-const WomenWestern = () => {
+const Ja = () => {
   const { fetchedProductData, setfetchedProductData } = useContext(centralContext);
   function fetchData() {
-    fetch("https://fakestoreapi.com/products/category/women's clothing")
+    fetch("https://fakestoreapi.com/products/category/jewelery")
       .then(res => res.json())
       .then(data => {
         setfetchedProductData(data);
@@ -16,8 +16,7 @@ const WomenWestern = () => {
   return (
     <>
       <Fr fetchedProductData={fetchedProductData} />
-
     </>
   )
 }
-export default WomenWestern;
+export default Ja;
